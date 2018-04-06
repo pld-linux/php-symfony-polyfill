@@ -9,6 +9,7 @@ Source0:	https://github.com/symfony/polyfill/archive/v%{version}/%{name}-%{versi
 # Source0-md5:	751761359d26c55731c1858cc14a74c6
 URL:		https://github.com/symfony/polyfill
 Requires:	php(core) >= %{php_min_version}
+Requires:	php-dirs >= 1.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
