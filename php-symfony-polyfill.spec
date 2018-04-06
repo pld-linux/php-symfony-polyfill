@@ -2,7 +2,7 @@
 Summary:	Symfony polyfills backporting features to lower PHP versions
 Name:		php-symfony-polyfill
 Version:	1.7.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages/PHP
 Source0:	https://github.com/symfony/polyfill/archive/v%{version}/%{name}-%{version}.tar.gz
