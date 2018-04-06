@@ -8,6 +8,7 @@ Group:		Development/Languages/PHP
 Source0:	https://github.com/symfony/polyfill/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	751761359d26c55731c1858cc14a74c6
 URL:		https://github.com/symfony/polyfill
+BuildRequires:	phpab
 Requires:	php(core) >= %{php_min_version}
 Requires:	php-dirs >= 1.6
 BuildArch:	noarch
@@ -99,6 +100,9 @@ rm src/Intl/*/LICENSE
 rm -r src/{Apcu,Iconv,Intl,Mbstring,Xml}
 rm -r tests/{Apcu,Iconv,Intl,Mbstring}
 
+%build
+phpab -n -e '*/Tests/*' -o src/autoload.php --tolerant src
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_data_dir}/Symfony/Polyfill
@@ -111,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE
 %dir %{php_data_dir}/Symfony/Polyfill
+%{php_data_dir}/Symfony/Polyfill/autoload.php
 
 %files php54
 %defattr(644,root,root,755)
