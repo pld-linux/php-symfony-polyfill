@@ -16,6 +16,68 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Symfony polyfills backporting features to lower PHP versions.
 
+%package php54
+Summary:	Symfony polyfill backporting some PHP 5.4+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php54
+Symfony polyfill backporting some PHP 5.4+ features to lower PHP
+versions.
+
+%package php55
+Summary:	Symfony polyfill backporting some PHP 5.5+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php55
+Symfony polyfill backporting some PHP 5.5+ features to lower PHP
+versions.
+
+%package php56
+Summary:	Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php56
+Symfony polyfill backporting some PHP 5.6+ features to lower PHP
+versions.
+
+%package php70
+Summary:	Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php70
+Symfony polyfill backporting some PHP 7.0+ features to lower PHP
+versions.
+
+%package php71
+Summary:	Symfony polyfill backporting some PHP 7.1+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php71
+Symfony polyfill backporting some PHP 7.1+ features to lower PHP
+versions.
+
+%package php72
+Summary:	Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description php72
+Symfony polyfill backporting some PHP 7.2+ features to lower PHP
+versions.
+
+%package util
+Summary:	Symfony utilities for portability of PHP code
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description util
+Symfony utilities for portability of PHP code.
+
 %prep
 %setup -qn polyfill-%{version}
 
@@ -34,7 +96,8 @@ rm src/*/LICENSE
 rm src/Intl/*/LICENSE
 
 # Remove unneeded polyfills
-rm -r {src,tests}/{Apcu,Iconv,Intl,Mbstring}
+rm -r src/{Apcu,Iconv,Intl,Mbstring,Xml}
+rm -r tests/{Apcu,Iconv,Intl,Mbstring}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -46,5 +109,40 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* LICENSE
-%{php_data_dir}/Symfony/Polyfill
+%doc LICENSE
+%dir %{php_data_dir}/Symfony/Polyfill
+
+%files php54
+%defattr(644,root,root,755)
+%doc docs/Php54/*
+%{php_data_dir}/Symfony/Polyfill/Php54
+
+%files php55
+%defattr(644,root,root,755)
+%doc docs/Php55/*
+%{php_data_dir}/Symfony/Polyfill/Php55
+
+%files php56
+%defattr(644,root,root,755)
+%doc docs/Php56/*
+%{php_data_dir}/Symfony/Polyfill/Php56
+
+%files php70
+%defattr(644,root,root,755)
+%doc docs/Php70/*
+%{php_data_dir}/Symfony/Polyfill/Php70
+
+%files php71
+%defattr(644,root,root,755)
+%doc docs/Php71/*
+%{php_data_dir}/Symfony/Polyfill/Php71
+
+%files php72
+%defattr(644,root,root,755)
+%doc docs/Php72/*
+%{php_data_dir}/Symfony/Polyfill/Php72
+
+%files util
+%defattr(644,root,root,755)
+%doc docs/Util/*
+%{php_data_dir}/Symfony/Polyfill/Util
